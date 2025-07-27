@@ -15,29 +15,15 @@ const app = express();
 // CORS Configuration - Allow multiple origins
 const corsOptions = {
     origin: function (origin, callback) {
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true);
-        
-        const allowedOrigins = [
-            'http://localhost:3000',
-            'http://localhost:5500',
-            'http://127.0.0.1:5500',
-            'http://127.0.0.1:3000',
-            'http://localhost:8080',
-            'http://127.0.0.1:8080'
-        ];
-        
-        if (allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            console.log('❌ CORS blocked origin:', origin);
-            callback(new Error('Not allowed by CORS'));
-        }
+        // Allow all origins (including undefined for curl or mobile apps)
+        return callback(null, true);
     },
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 };
+
+   
 
 // Middleware
 app.use(cors(corsOptions));
