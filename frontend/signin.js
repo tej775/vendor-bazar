@@ -21,7 +21,7 @@ function togglePassword() {
 }
 
 // Backend API URL
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://vendor-bazar-backend.onrender.com/api';
 
 // Form Submission Handlers
 document.addEventListener("DOMContentLoaded", function () {
